@@ -2,7 +2,7 @@
 // Created by yz L on 2019-03-20.
 //
 
-#include "median.h"
+#include "commonHeaders.h"
 
 double findMedianSortedArrays(std::vector<int> &nums1, std::vector<int> &nums2) {
 
