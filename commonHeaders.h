@@ -7,6 +7,14 @@
 
 #include <vector>
 #include <string>
+#include <algorithm>
+/**
+ *
+ * @param src
+ * @param target
+ * @return
+ */
+std::vector<int> getCharMinDistanceBinarySearch(const std::string& src, const char target);
 
 /**
  *
@@ -14,7 +22,7 @@
  * @param target
  * @return
  */
-std::vector<int> getCharMinDistance(const std::string& src, const char target);
+std::vector<int> getCharMinDistanceNormal(const std::string& src, char target);
 
 /**
  *

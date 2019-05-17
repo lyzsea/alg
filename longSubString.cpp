@@ -2,7 +2,6 @@
 // Created by yz L on 2019-03-21.
 //
 #include <unordered_set>
-#include <vector>
 
 #include "commonHeaders.h"
 
