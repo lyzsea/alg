@@ -19,6 +19,5 @@ public:
 private:
     std::string functionName;
     steady_clock::time_point startTime;
-    steady_clock::time_point endTime;
 };
 #endif //ALG_FUNCTIONTIMER_H
