@@ -8,6 +8,8 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+
+#include "header/palindrome.h"
 /**
  *
  * @param src
@@ -31,13 +33,6 @@ std::vector<int> getCharMinDistanceNormal(const std::string& src, char target);
  * @return
  */
 std::vector<std::string> paginate(int perpageCount,const std::vector<std::string>& src);
-
-/**
- *
- * @param s
- * @return
- */
-std::string longestPalindrome(const std::string& s);
 
 /**
  *

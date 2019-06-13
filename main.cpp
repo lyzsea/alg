@@ -22,11 +22,16 @@ TEST(testCharMinDistance,getCharMinDistanceBinarySearch) {
     for_each(resultVecSecond.begin(), resultVecSecond.end(), &print<int >);
 }
 
-TEST(testPalindrome,longestPalindrome) {
+TEST(testPalindrome,findLongestPalindrome) {
     std::cout<<endl;
-    std::string src ="ababbaef";
-    std::string longestPalindromeStr = longestPalindrome(src);
-    std::cout<<longestPalindromeStr<<endl;
+    const std::string src ="ababcbaeffeabc";
+    CPalindrome instance = CSingleton<CPalindrome>::getInstance();
+    std::string longestPalindromeStr = instance.findLongestPalindrome(src,
+                                                                      CPalindrome::ALG_TYPE::CENTRE_SPREAD);
+    std::cout << longestPalindromeStr << endl;
+
+    longestPalindromeStr = instance.findLongestPalindrome(src);
+    std::cout << longestPalindromeStr << endl;
 }
 
 TEST(testHostCrowding,paginate) {
