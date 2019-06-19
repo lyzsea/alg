@@ -2,7 +2,7 @@
 // Created by yz L on 2019-05-17.
 //
 #include <iostream>
-#include "functionTimer.h"
+#include "../header/functionTimer.h"
 
 CFunctionTimer::CFunctionTimer() {
     this->startTime = steady_clock::now();

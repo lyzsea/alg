@@ -3,8 +3,8 @@
 using namespace std;
 #include <gtest/gtest.h>
 
-#include "commonHeaders.h"
-#include "functionTimer.h"
+#include "header/commonHeaders.h"
+#include "header/functionTimer.h"
 
 template <class T>
 void print(T n) {
@@ -54,6 +54,20 @@ TEST(testHostCrowding,paginate) {
         std::cout<<*itor<<std::endl;
     }
 }
+
+TEST(testLongestDiffString,longestDiffSubstring) {
+    std::cout<<endl;
+    CLongDiffString instance = CSingleton<CLongDiffString>::getInstance();
+    std::string testStr = "hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    std::cout << "0: " << instance.longestDiffSubstring(testStr) << std::endl;
+    std::cout << "1: " << instance.longestDiffSubstring("dvdf") << std::endl;
+    std::cout << "2: " << instance.longestDiffSubstring("##b") << std::endl;
+    std::cout << "3: " << instance.longestDiffSubstring("wpwwef") << std::endl;
+    std::cout << "4: " << instance.longestDiffSubstring("$$$$$") << std::endl;
+    std::cout << "5: " << instance.longestDiffSubstring("abcabcbf") << std::endl;
+}
+
+
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

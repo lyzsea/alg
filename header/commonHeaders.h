@@ -9,7 +9,8 @@
 #include <string>
 #include <algorithm>
 
-#include "header/palindrome.h"
+#include "palindrome.h"
+#include "longDiffString.h"
 /**
  *
  * @param src
@@ -34,13 +35,6 @@ std::vector<int> getCharMinDistanceNormal(const std::string& src, char target);
  */
 std::vector<std::string> paginate(int perpageCount,const std::vector<std::string>& src);
 
-/**
- *
- * @param s
- * @return
- */
-int lengthOfLongestSubstring(std::string s);
-int lengthOfLongestSubstring2(std::string s);
 
 /**
  *

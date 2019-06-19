@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <unordered_map>
 
-#include "commonHeaders.h"
+#include "header/commonHeaders.h"
 
 std::vector<int> twoSum(std::vector<int>& nums, int target) {
     std::unordered_map<int,int> maps;

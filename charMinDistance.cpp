@@ -1,8 +1,8 @@
 //
 // Created by yz L on 2019-05-10.
 //
-#include "commonHeaders.h"
-#include "functionTimer.h"
+#include "header/commonHeaders.h"
+#include "header/functionTimer.h"
 
 /*** 题目描述
  * 给定一个字符串String以及一个字符Char，请编程返回一个数组来表达String中各字符到字符Char的最短距离。

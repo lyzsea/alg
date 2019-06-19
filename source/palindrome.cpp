@@ -18,11 +18,12 @@
 */
 
 
-#include "commonHeaders.h"
-#include "header/palindrome.h"
+#include <iostream>
+#include "../header/commonHeaders.h"
+#include "../header/palindrome.h"
 
 /**
- *
+ * find最长回文子串
  * @param src
  * @param algType
  * @return
@@ -44,7 +45,14 @@ std::string CPalindrome::findLongestPalindrome(const std::string& src,ALG_TYPE a
     return this->longestPalindromeStr;
 }
 
+/**
+ * 马拉车算法，即每个字符中间插入特殊字符，使其变为奇数长度字符串
+ * 如： abba  -> #a#b#b#a#
+ * @param src
+ * @return
+ */
 std::string CPalindrome::manacher(const std::string &src) {
+    // 插入特殊字符
     std::string transform(src.size()*2+1,'#');
     for (int i = 0; i < transform.size(); ++i) {
         if (i%2 == 1) {
@@ -52,9 +60,12 @@ std::string CPalindrome::manacher(const std::string &src) {
         }
     }
 
+    std::cout<<"transform string: "<< transform<<std::endl;
+
+    // transform中每个字符以其自身为中心的最长回文串的半径长度
     std::vector<int> palindromeLen(transform.size(), 0);
-    int maxSubMiddle =0;
-    int maxSubRight = 0;
+    int maxSubMiddle =0;//已遍历最长回文子串的中间字符索引
+    int maxSubRight = 0;//已遍历最长回文子串的最右侧字符索引
     // right-middle+1
     for (int i = 0; i < transform.size(); ++i) {
         if (i < maxSubRight) {
@@ -68,21 +79,25 @@ std::string CPalindrome::manacher(const std::string &src) {
             palindromeLen[i] = 1;
         }
 
+        //transform[i]两端开始扩展匹配，直到匹配失败时停止
         while (i - palindromeLen[i] >= 0
                && i + palindromeLen[i] < transform.size()
                && transform[i - palindromeLen[i]] == transform[i + palindromeLen[i]]) {
-            palindromeLen[i] += 1; //transform[i]两端开始扩展匹配，直到匹配失败时停止
+            palindromeLen[i] += 1;
         }
 
-        //匹配的新回文子串长度大于原有的长度
-        if (palindromeLen[i] >= palindromeLen[maxSubMiddle]) {
+        //匹配的新回文子串长度大于原有最大的长度
+        if (palindromeLen[i] > palindromeLen[maxSubMiddle]) {
             maxSubRight = palindromeLen[i] + i - 1;
             maxSubMiddle = i;
         }
     }
 
-    this->maxPalindromeLength = maxSubRight - maxSubMiddle;
+    // maxSubRight - maxSubMiddle即为增量字符串回文的半径，所以相当于原始字符串的最长回文长度
+    this->maxPalindromeLength = maxSubRight - maxSubMiddle;// ->palindromeLen[maxSubMiddle] - 1
 
+    // 原始字符串最长回文子串的起始位置索引 = （（maxSubMiddle - 1）- palindromeLen[maxSubMiddle]）/ 2
+    // (maxSubMiddle - 1 - palindromeLen[maxSubMiddle])/2 => (2*maxSubMiddle - maxSubRight)/2
     return src.substr((2*maxSubMiddle - maxSubRight)/2, this->maxPalindromeLength);
 }
 
