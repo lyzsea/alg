@@ -12,6 +12,6 @@ link_libraries(gtest)
 
 find_package(GTEST REQUIRED)
 
-add_executable(alg main.cpp hostCrowding.cpp numSum.cpp ListNode.h median.cpp source/longDiffString.cpp source/palindrome.cpp header/commonHeaders.h charMinDistance.cpp header/functionTimer.h source/functionTimer.cpp header/palindrome.h header/singleton.h header/longDiffString.h)
+add_executable(alg main.cpp hostCrowding.cpp numSum.cpp ListNode.h median.cpp source/longDiffString.cpp source/palindrome.cpp header/commonHeaders.h charMinDistance.cpp header/functionTimer.h source/functionTimer.cpp header/palindrome.h header/singleton.h header/longDiffString.h header/longCommString.h source/longCommString.cpp)
 
 target_link_libraries(${PROJECT_NAME} gtest)

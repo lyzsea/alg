@@ -8,9 +8,12 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iostream>
 
 #include "palindrome.h"
 #include "longDiffString.h"
+#include "longCommString.h"
+
 /**
  *
  * @param src

@@ -4,7 +4,6 @@ using namespace std;
 #include <gtest/gtest.h>
 
 #include "header/commonHeaders.h"
-#include "header/functionTimer.h"
 
 template <class T>
 void print(T n) {
@@ -56,7 +55,7 @@ TEST(testHostCrowding,paginate) {
 }
 
 TEST(testLongestDiffString,longestDiffSubstring) {
-    std::cout<<endl;
+    std::cout<<"最长非重复子串"<<endl;
     CLongDiffString instance = CSingleton<CLongDiffString>::getInstance();
     std::string testStr = "hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789hijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     std::cout << "0: " << instance.longestDiffSubstring(testStr) << std::endl;
@@ -67,6 +66,29 @@ TEST(testLongestDiffString,longestDiffSubstring) {
     std::cout << "5: " << instance.longestDiffSubstring("abcabcbf") << std::endl;
 }
 
+TEST(testLongCommString,findLongestCommString) {
+    std::cout <<"最长公共子串"<<std::endl;
+
+    CLongCommString instance = CSingleton<CLongCommString>::getInstance();
+    std::cout << "1: " << instance.findLongestCommString("xxabcd", "abcd") << std::endl;
+    std::cout << "2: " << instance.findLongestCommString("abc", "cdef") << std::endl;
+}
+
+TEST(testLongCommString,lengthOfCommSequence) {
+    std::cout <<"最长公共子序列长度"<< std::endl;
+
+    CLongCommString instance = CSingleton<CLongCommString>::getInstance();
+    std::cout << "length: " << instance.lengthOfCommSequence("xxaybycyd", "azbzczdz") << std::endl;
+    std::cout << "length: " << instance.lengthOfCommSequence("abc", "acdef") << std::endl;
+}
+
+TEST(testLongCommString,findLongestCommSequence) {
+    std::cout <<"最长公共子序列"<< std::endl;
+
+    CLongCommString instance = CSingleton<CLongCommString>::getInstance();
+    std::cout << "common sequence: " << instance.findLongestCommSequence("xxaybycyd", "azbzczdz") << std::endl;
+    std::cout << "common sequence: " << instance.findLongestCommSequence("abc", "acdef") << std::endl;
+}
 
 
 int main(int argc, char **argv) {
