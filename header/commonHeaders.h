@@ -13,6 +13,7 @@
 #include "palindrome.h"
 #include "longDiffString.h"
 #include "longCommString.h"
+#include "minDistanceToChar.h"
 
 /**
  *

@@ -1,42 +1,36 @@
 //
 // Created by yz L on 2019-05-10.
 //
-#include "header/commonHeaders.h"
-#include "header/functionTimer.h"
+#include "../header/commonHeaders.h"
+#include "../header/functionTimer.h"
+#include "../header/minDistanceToChar.h"
 
-/*** 题目描述
+/*** 821.题目描述
  * 给定一个字符串String以及一个字符Char，请编程返回一个数组来表达String中各字符到字符Char的最短距离。
  * 例如:
  * 输入: String = "lovewejoydata", Char = 'e'
  * 输出: [3, 2, 1, 0, 1, 0, 1, 2, 3, 4, 5, 6，7]
  */
 
-/**
- * 二分查找实现
- * @param curIndex
- * @param targetIndexVec
- * @return
- */
-int getMinDistanceBinarySearch(int curIndex, const std::vector<int> &targetIndexVec);
 
-/**
- * 正常思路，顺序遍历查找
- * @param curIndex
- * @param startItor
- * @param targetIndexVec
- * @return
- */
-int getMinDistanceNormal(int curIndex,
-                   std::vector<int>::const_iterator startItor,
-                   const std::vector<int> &targetIndexVec);
-
+std::vector<int> CMinDistanceToChar::getMinDistanceArray(const std::string &src, char target,
+                                                         CMinDistanceToChar::ALG_TYPE algType) {
+    switch (algType) {
+        case ALG_TYPE::BINARY_SEARCH:
+            return getCharMinDistanceBinarySearch(src,target);
+        case ALG_TYPE::NORMAL:
+            return getCharMinDistanceNormal(src,target);
+        default:
+            return getCharMinDistanceBinarySearch(src,target);
+    }
+}
 /**
  * 子数组利用二分查找实现,更高效
  * @param src
  * @param target
  * @return
  */
-std::vector<int> getCharMinDistanceBinarySearch(const std::string& src, char target) {
+std::vector<int> CMinDistanceToChar::getCharMinDistanceBinarySearch(const std::string& src, char target) {
     CFunctionTimer timer(__FUNCTION__);
     size_t srcLength = src.length();
     std::vector<int> targetIndexVec;
@@ -66,7 +60,7 @@ std::vector<int> getCharMinDistanceBinarySearch(const std::string& src, char tar
  * @param target
  * @return
  */
-std::vector<int> getCharMinDistanceNormal(const std::string& src, char target) {
+std::vector<int> CMinDistanceToChar::getCharMinDistanceNormal(const std::string& src, char target) {
     CFunctionTimer timer(__FUNCTION__);
     size_t srcLength = src.length();
     std::vector<int> targetIndexVec;
@@ -91,7 +85,13 @@ std::vector<int> getCharMinDistanceNormal(const std::string& src, char target) {
     return result;
 }
 
-int getMinDistanceBinarySearch(int curIndex, const std::vector<int> &targetIndexVec) {
+/**
+ * 利用二分查找的变型，查找当前节点的最短距离
+ * @param curIndex
+ * @param targetIndexVec
+ * @return
+ */
+int CMinDistanceToChar::getMinDistanceBinarySearch(int curIndex, const std::vector<int> &targetIndexVec) {
     int beginIndex = *targetIndexVec.begin();
     if (curIndex < beginIndex) {
         return beginIndex - curIndex;
@@ -121,7 +121,14 @@ int getMinDistanceBinarySearch(int curIndex, const std::vector<int> &targetIndex
     return minDistance;
 }
 
-int getMinDistanceNormal(int curIndex,
+/**
+ * 正常思路，顺序遍历查找
+ * @param curIndex
+ * @param startItor
+ * @param targetIndexVec
+ * @return
+ */
+int CMinDistanceToChar::getMinDistanceNormal(int curIndex,
                          std::vector<int>::const_iterator startItor,
                          const std::vector<int> &targetIndexVec) {
     int beginIndex = *targetIndexVec.begin();

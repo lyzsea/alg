@@ -10,19 +10,21 @@ void print(T n) {
     std::cout<<n<<", ";
 }
 
-TEST(testCharMinDistance,getCharMinDistanceBinarySearch) {
-    std::cout<<endl;
+TEST(testminDistanceToChar,getMinDistanceArray) {
+    std::cout<<"字符串各字符到目标字符的最短距离"<<endl;
     const std::string src = "lovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydatalovewwwejoydata";
 
-    std::vector<int> resultVec = getCharMinDistanceBinarySearch(src, 'e');
+    CMinDistanceToChar instance =  CSingleton<CMinDistanceToChar>::getInstance();
+
+    std::vector<int> resultVec = instance.getMinDistanceArray(src, 'e');
     for_each(resultVec.begin(), resultVec.end(), &print<int>);
 
-    std::vector<int> resultVecSecond = getCharMinDistanceNormal(src, 'e');
+    std::vector<int> resultVecSecond = instance.getMinDistanceArray(src, 'e',CMinDistanceToChar::ALG_TYPE::NORMAL);
     for_each(resultVecSecond.begin(), resultVecSecond.end(), &print<int >);
 }
 
 TEST(testPalindrome,findLongestPalindrome) {
-    std::cout<<endl;
+    std::cout<<"查找最长回文"<<endl;
     const std::string src ="ababcbaeffeabc";
     CPalindrome instance = CSingleton<CPalindrome>::getInstance();
     std::string longestPalindromeStr = instance.findLongestPalindrome(src,
