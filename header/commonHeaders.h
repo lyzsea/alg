@@ -15,6 +15,7 @@
 #include "longCommString.h"
 #include "minDistanceToChar.h"
 #include "zigzagConversion.h"
+#include "twoSumToTarget.h"
 
 /**
  *
@@ -32,13 +33,5 @@ std::vector<std::string> paginate(int perpageCount,const std::vector<std::string
  * @return
  */
 double findMedianSortedArrays(std::vector<int> &nums1, std::vector<int> &nums2);
-
-/**
- *
- * @param nums
- * @param target
- * @return
- */
-std::vector<int> twoSum(std::vector<int>& nums, int target);
 
 #endif //ALG_CHARMINDISTINCE_H
