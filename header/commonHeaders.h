@@ -14,22 +14,7 @@
 #include "longDiffString.h"
 #include "longCommString.h"
 #include "minDistanceToChar.h"
-
-/**
- *
- * @param src
- * @param target
- * @return
- */
-std::vector<int> getCharMinDistanceBinarySearch(const std::string& src, const char target);
-
-/**
- *
- * @param src
- * @param target
- * @return
- */
-std::vector<int> getCharMinDistanceNormal(const std::string& src, char target);
+#include "zigzagConversion.h"
 
 /**
  *
