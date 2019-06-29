@@ -19,7 +19,7 @@
 
 
 #include <iostream>
-#include "../header/commonHeaders.h"
+#include "../commonHeaders.h"
 #include "../header/palindrome.h"
 
 /**

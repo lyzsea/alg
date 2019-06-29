@@ -3,7 +3,7 @@
 using namespace std;
 #include <gtest/gtest.h>
 
-#include "header/commonHeaders.h"
+#include "commonHeaders.h"
 
 template <class T>
 void print(T n) {
@@ -52,7 +52,7 @@ TEST(testPalindrome,findLongestPalindrome) {
 }
 
 TEST(testHostCrowding,paginate) {
-    std::cout<<endl;
+    std::cout<<"hostCrowding"<<std::endl;
     std::vector<std::string> src;
     src.push_back("1,28,310.6,SF");
     src.push_back("4,5,204.1,SF");
@@ -66,7 +66,9 @@ TEST(testHostCrowding,paginate) {
     src.push_back("2,30,149.1,SF");
     src.push_back("3,76,146.2,SF");
     src.push_back("2,14,141.1,San Jose");
-    std::vector<std::string> result = paginate(5,src);
+    CHostCrowding instance = CSingleton<CHostCrowding>::getInstance();
+
+    std::vector<std::string> result = instance.paginate(5,src);
     for (auto itor = result.begin(); itor != result.end(); ++itor) {
         std::cout<<*itor<<std::endl;
     }

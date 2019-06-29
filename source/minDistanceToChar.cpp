@@ -1,7 +1,7 @@
 //
 // Created by yz L on 2019-05-10.
 //
-#include "../header/commonHeaders.h"
+#include "../commonHeaders.h"
 #include "../header/functionTimer.h"
 #include "../header/minDistanceToChar.h"
 

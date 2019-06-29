@@ -3,29 +3,14 @@
 //
 #include <list>
 #include <unordered_map>
-#include "header/commonHeaders.h"
+#include <vector>
+#include <string>
+#include <algorithm>
 
-/* 测试代码
- *  std::vector<std::string> src;
-    src.push_back("1,28,310.6,SF");
-    src.push_back("4,5,204.1,SF");
-    src.push_back("20,7,203.2,Oakland");
-    src.push_back("6,8,202.2,SF");
-    src.push_back("6,10,199.1,SF");
-    src.push_back("1,16,190.4,SF");
-    src.push_back("6,29,185.2,SF");
-    src.push_back("7,20,180.1,SF");
-    src.push_back("6,21,162.1,SF");
-    src.push_back("2,30,149.1,SF");
-    src.push_back("3,76,146.2,SF");
-    src.push_back("2,14,141.1,San Jose");
-    std::vector<std::string> result = paginate(5,src);
-    for (auto itor = result.begin(); itor != result.end(); ++itor) {
-        std::cout<<*itor<<std::endl;
-    }
-*/
+#include "../header/hostCrowding.h"
 
-std::vector<std::string> paginate(int perpageCount,const std::vector<std::string>& src) {
+
+std::vector<std::string> CHostCrowding::paginate(int perpageCount,const std::vector<std::string>& src) {
     std::list<std::pair<int,int>> hostIds;
     for (int i = 0; i < src.size(); ++i) {
         const std::string& srcItem =src[i];
