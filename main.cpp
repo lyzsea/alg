@@ -121,6 +121,30 @@ TEST(testZigzagConversion,zigzagConvert) {
     std::cout<<"zigzag output: "<<instance.zigzagConvert("PAYPALISHIRING",4) << ", result: PINALSIGYAHRPI"<<std::endl;*/
 }
 
+TEST(testListReverse,reverse) {
+    std::cout << "list reverse " << std::endl;
+    ListNode<int> *node1 = new ListNode<int>(1);
+    ListNode<int> *node2 = new ListNode<int>(2);
+    ListNode<int> *node3 = new ListNode<int>(3);
+    ListNode<int> *node4 = new ListNode<int>(4);
+    ListNode<int> *node5 = new ListNode<int>(5);
+    ListNode<int> *node6 = new ListNode<int>(6);
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = node4;
+    node4->next = node5;
+    node5->next = node6;
+
+    ListNode<int> *pHeader = node1;
+    CListReverse instance = CSingleton<CListReverse>::getInstance();
+    instance.printList(pHeader);
+    ListNode<int> *pReverse = instance.reverse(pHeader);
+    instance.printList(pReverse);
+
+    pHeader = instance.reverseKGroup(pReverse,2);
+    instance.printList(pHeader);
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
