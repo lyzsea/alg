@@ -58,6 +58,11 @@ public:
     template <typename T>
     ListNode<T>* reverseKGroup(ListNode<T>* pHead, int k);
 
+    /**
+     * print list,  * type is value type, & is reference.
+     * @tparam T
+     * @param pHead
+     */
     template <typename T>
     void printList(ListNode<T>* pHead);
 
@@ -90,18 +95,40 @@ ListNode<T>* CListReverse::reverse(ListNode<T>* pHead) {
 }
 
 template <typename T>
+ListNode<T>* CListReverse::reverseKGroup(ListNode<T>* pHead, int k) {
+    // After reverse for K Group，the last node of the group is the header of current list.
+    // init it.
+    ListNode<T>* pGroupLastNode = pHead;
+    // next node after group be reversed.
+    ListNode<T>* pGroupNextNode = nullptr;
+
+    // firstly, reverse K group ,get the new header that list will be reversed.
+    ListNode<T>* pNewHeader = reverseGroup(pHead,k,pGroupNextNode);
+    while (pGroupNextNode != nullptr) {
+        ListNode<T>* pPreGroupHeader = pGroupNextNode;
+        ListNode<T>* pGroupHeader = reverseGroup(pPreGroupHeader,k,pGroupNextNode);
+        pGroupLastNode->next = pGroupHeader;
+        pGroupLastNode = pPreGroupHeader;
+    }
+
+    return pNewHeader;
+}
+
+template <typename T>
 ListNode<T>* CListReverse::reverseGroup(ListNode<T>* pHead,int k,ListNode<T>*& pGroupNextNode) {
-    int leaveNodeNum =0;
+    //Count the left length of list, if it less to K, do not reverse
+    int leftNodeNum =0;
     ListNode<T>* pRoot = pHead;
-    while (pRoot != nullptr && leaveNodeNum < k) {
-        leaveNodeNum++;
+    while (pRoot != nullptr && leftNodeNum < k) {
+        ++leftNodeNum;
         pRoot = pRoot->next;
     }
-    if (leaveNodeNum < k) {
+    if (leftNodeNum < k) {
         pGroupNextNode = nullptr;
         return pHead;
     }
 
+    // exec K nodes reverse of list.
     ListNode<T>* pTail = nullptr;
     ListNode<T>* pNext = nullptr;
     int reverseNum =0;
@@ -121,23 +148,8 @@ ListNode<T>* CListReverse::reverseGroup(ListNode<T>* pHead,int k,ListNode<T>*& p
 }
 
 template <typename T>
-ListNode<T>* CListReverse::reverseKGroup(ListNode<T>* pHead, int k) {
-    ListNode<T>* pGroupLastNode = pHead;
-    ListNode<T>* pGroupNextNode = nullptr;
-
-    ListNode<T>* pNewHeader = reverseGroup(pHead,k,pGroupNextNode);
-    while (pGroupNextNode != nullptr) {
-        ListNode<T>* pPreGroupHeader = pGroupNextNode;
-        ListNode<T>* pGroupHeader = reverseGroup(pPreGroupHeader,k,pGroupNextNode);
-        pGroupLastNode->next = pGroupHeader;
-        pGroupLastNode = pPreGroupHeader;
-    }
-
-    return pNewHeader;
-}
-
-template <typename T>
 void CListReverse::printList(ListNode<T>* pHead) {
+    // pointer is value type, header won't be destroyed.
     while (pHead != nullptr) {
         std::cout<<pHead->nData<<", ";
         pHead = pHead->next;

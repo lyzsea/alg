@@ -20,7 +20,7 @@
 
 #include <iostream>
 #include "../commonHeaders.h"
-#include "../header/palindrome.h"
+#include "../header/palindromeString.h"
 
 /**
  * find最长回文子串
