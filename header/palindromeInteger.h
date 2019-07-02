@@ -23,10 +23,28 @@ https://leetcode-cn.com/problems/palindrome-number
  */
 #ifndef ALG_PALINDROMEINTEGER_H
 #define ALG_PALINDROMEINTEGER_H
+
 class CPalindromeInteger {
 public:
-    bool isPalindrome(int x) {
-        return false;
+    /**
+     * reverse itself and then compare to origin value, palindrome integer is same.
+     * @param src
+     * @return
+     */
+    bool isPalindrome(int src) {
+        if (src < 0) {
+            return false;
+        }
+
+        int origin = src;
+        int reverse = 0;
+        while (src != 0) {
+            reverse = reverse * 10 + src % 10;
+            src /= 10;
+        }
+
+        return origin == reverse;
     }
 };
+
 #endif //ALG_PALINDROMEINTEGER_H

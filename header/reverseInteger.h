@@ -30,8 +30,6 @@ https://leetcode-cn.com/problems/reverse-integer
 
 
 class CReverseInteger {
-    friend class CSingleton<CReverseInteger>;
-
 public:
     int reverseInteger(int src) {
         int output = 0;

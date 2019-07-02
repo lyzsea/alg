@@ -34,11 +34,7 @@ P     I
 #define ALG_ZIGZAGCONVERSION_H
 
 #include <string>
-
-#include "singleton.h"
 class CZigzagConversion {
-    friend class CSingleton<CZigzagConversion>;
-
 public:
     enum ALG_TYPE {
         NORMAL,// 模拟锯齿变形过程, 高效一些

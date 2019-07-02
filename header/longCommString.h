@@ -7,11 +7,7 @@
 
 #include <string>
 
-#include "singleton.h"
-
 class CLongCommString {
-    friend class CSingleton<CLongCommString> ;
-
 public:
     enum ALG_TYPE {
         MATRIX = 0,// 二维数组矩阵

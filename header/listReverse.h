@@ -22,8 +22,6 @@ https://leetcode-cn.com/problems/reverse-nodes-in-k-group
 
 #include <iostream>
 
-#include "singleton.h"
-
 template <typename T>
 class ListNode {
 public:
@@ -36,8 +34,6 @@ public:
 };
 
 class CListReverse {
-    friend class CSingleton<CListReverse>;
-
 public:
     /**
      * list reverse

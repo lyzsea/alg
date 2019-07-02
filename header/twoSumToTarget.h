@@ -19,11 +19,8 @@ https://leetcode-cn.com/problems/two-sum
 #define ALG_CTWOSUMTOTARGET_H
 
 #include <vector>
-#include "singleton.h"
 
 class CTwoSumToTarget {
-    friend class CSingleton<CTwoSumToTarget>;
-
 public:
     std::vector<int> twoSumToTarget(std::vector<int>& nums, int target);
 };

@@ -50,4 +50,54 @@ https://leetcode-cn.com/problems/string-to-integer-atoi
 #ifndef ALG_ATOI_H
 #define ALG_ATOI_H
 
+#include <string>
+#include <climits>
+
+class CStringToInt {
+public:
+    int myAtoi(const std::string& src) {
+        if (src.empty()) {
+            return 0;
+        }
+
+        bool isMinus = false;
+        int i = 0;
+        for (; i < src.size(); ++i) {
+            if (src[i] == ' ')
+                continue;
+
+            if (src[i] == '-') {
+                isMinus = true;
+                ++i;
+            }
+            break;
+        }
+
+        int output = 0;
+        for (; i < src.size(); ++i) {
+            int digit = src[i] - 48;
+            if (digit < 0 || digit > 9) {
+                return output;
+            }
+
+            if (isMinus) {
+                output = output > 0 ? output*-1:output;
+                digit *= -1;
+            }
+
+            // check overflow.
+            if (output > INT_MAX / 10 || (output == INT_MAX / 10 && digit > 7)) {
+                return INT_MAX;
+            }
+
+            if (output < INT_MIN / 10 || (output == INT_MIN / 10 && digit < -8)) {
+                return INT_MIN;
+            }
+
+            output = output * 10 + digit;
+        }
+
+        return output;
+    }
+};
 #endif //ALG_ATOI_H

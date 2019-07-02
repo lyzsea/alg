@@ -26,10 +26,8 @@
 #define ALG_HOSTCROWDING_H
 #include <vector>
 
-#include "singleton.h"
-
 class CHostCrowding {
-    friend class CSingleton<CHostCrowding>;
+
 
 public:
     std::vector<std::string> paginate(int perpageCount,const std::vector<std::string>& src);

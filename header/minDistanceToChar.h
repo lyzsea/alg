@@ -7,11 +7,7 @@
 #include <string>
 #include <vector>
 
-#include "singleton.h"
-
 class CMinDistanceToChar {
-    friend class CSingleton<CMinDistanceToChar> ;
-
 public:
     enum ALG_TYPE {
        BINARY_SEARCH,

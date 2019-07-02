@@ -35,13 +35,9 @@
    std::cout << "len4: " << lengthOfLongestSubstring2("$$$$$") << std::endl;
    std::cout << "len5: " << lengthOfLongestSubstring2("abcabcbf") << std::endl;
 */
-
-#include "singleton.h"
 #include <string>
 
 class CLongDiffString {
-    friend class CSingleton<CLongDiffString> ;
-
 public:
     enum ALG_TYPE {
         COMMON = 0,//两层循环判断

@@ -7,10 +7,7 @@
 
 #include <string>
 
-#include "singleton.h"
-
 class CPalindrome {
-    friend class CSingleton<CPalindrome> ;
 public:
     enum ALG_TYPE {
         MANACHER = 0,//马拉车算法

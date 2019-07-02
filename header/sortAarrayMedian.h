@@ -28,11 +28,7 @@ https://leetcode-cn.com/problems/median-of-two-sorted-arrays
 
 #include <vector>
 
-#include "singleton.h"
-
 class CMedianSortArray {
-    friend class CSingleton<CMedianSortArray>;
-
 public:
     double findMedianSortedArrays(std::vector<int>& nums1, std::vector<int>& nums2);
 };

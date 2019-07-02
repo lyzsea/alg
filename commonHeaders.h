@@ -12,3 +12,5 @@
 #include "header/hostCrowding.h"
 #include "header/listReverse.h"
 #include "header/reverseInteger.h"
+#include "header/palindromeInteger.h"
+#include "header/stringToInt.h"
