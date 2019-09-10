@@ -19,7 +19,7 @@
 
 
 #include <iostream>
-#include "../commonHeaders.h"
+#include <vector>
 #include "../header/palindromeString.h"
 
 /**
@@ -29,7 +29,6 @@
  * @return
  */
 std::string CPalindrome::findLongestPalindrome(const std::string& src,ALG_TYPE algType) {
-    this->maxPalindromeLength = 0;
     switch (algType) {
         case ALG_TYPE::CENTRE_SPREAD :
             this->longestPalindromeStr = centreSpread(src);
@@ -37,12 +36,44 @@ std::string CPalindrome::findLongestPalindrome(const std::string& src,ALG_TYPE a
         case ALG_TYPE::MANACHER :
             this->longestPalindromeStr = manacher(src);
             break;
+        case REVERSE:
+            this->longestPalindromeStr = reverseLongestSubString(src);
+            break;
         default:
             this->longestPalindromeStr = manacher(src);
             break;
     }
 
     return this->longestPalindromeStr;
+}
+
+std::string CPalindrome::reverseLongestSubString(const std::string& src) {
+    std::string reverseSrc = src;
+    std::reverse(reverseSrc.begin(),reverseSrc.end());
+
+    std::vector<std::vector<int>> matrix(src.size());
+    for (int i = 0; i < src.size(); ++i) {
+        matrix[i].resize(src.size(),0);
+    }
+
+    int maxCommLength = 0;
+    int indexForMaxLength =0;
+    for (int i = 0; i < src.size(); ++i) {
+        for (int j = 0; j < src.size(); ++j) {
+            if (src[i] != reverseSrc[j]) {
+                continue;
+            }
+
+            matrix[i][j] = i > 0 && j > 0 ? matrix[i - 1][j - 1] + 1 : 1;
+
+            if (matrix[i][j] > maxCommLength) {
+                maxCommLength = matrix[i][j];
+                indexForMaxLength = i;
+            }
+        }
+    }
+
+    return maxCommLength > 0 ? src.substr(indexForMaxLength - maxCommLength + 1, maxCommLength) : "";
 }
 
 /**
@@ -94,14 +125,15 @@ std::string CPalindrome::manacher(const std::string &src) {
     }
 
     // maxSubRight - maxSubMiddle即为增量字符串回文的半径，所以相当于原始字符串的最长回文长度
-    this->maxPalindromeLength = maxSubRight - maxSubMiddle;// ->palindromeLen[maxSubMiddle] - 1
+    int maxPalindromeLength = maxSubRight - maxSubMiddle;// ->palindromeLen[maxSubMiddle] - 1
 
     // 原始字符串最长回文子串的起始位置索引 = （（maxSubMiddle - 1）- palindromeLen[maxSubMiddle]）/ 2
     // (maxSubMiddle - 1 - palindromeLen[maxSubMiddle])/2 => (2*maxSubMiddle - maxSubRight)/2
-    return src.substr((2*maxSubMiddle - maxSubRight)/2, this->maxPalindromeLength);
+    return src.substr((2*maxSubMiddle - maxSubRight)/2, maxPalindromeLength);
 }
 
 std::string CPalindrome::centreSpread(const std::string &src) {
+    this->maxPalindromeLength = 0;
     for (int i = 0; i < src.size(); ++i) {
         // 偶数，双核回文
         longestPalindrome(src, i - 1, i);

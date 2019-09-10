@@ -48,7 +48,7 @@ TEST(testPalindrome,findLongestPalindrome) {
     const std::string src ="ababcbaeffeabc";
     CPalindrome instance = CSingleton<CPalindrome>::getInstance();
     std::string longestPalindromeStr = instance.findLongestPalindrome(src,
-                                                                      CPalindrome::ALG_TYPE::CENTRE_SPREAD);
+                                                                      CPalindrome::ALG_TYPE::REVERSE);
     std::cout << longestPalindromeStr << endl;
 
     longestPalindromeStr = instance.findLongestPalindrome(src);
@@ -187,6 +187,14 @@ TEST(shareTopicRandom,random) {
         cout << u(e) << " ";
     cout << endl;
 
+}
+
+TEST(testDeleteTargetChars, delTargetChars) {
+    std::cout << "delete target chars" << std::endl;
+    CDeleteTarget instance = CSingleton<CDeleteTarget>::getInstance();
+    char src[] = "they are enjoy data.";
+    EXPECT_EQ(instance.delTargetCharsBetter(src, "ae"),0);
+    std::cout << "output: " << src << std::endl;
 }
 
 int main(int argc, char **argv) {

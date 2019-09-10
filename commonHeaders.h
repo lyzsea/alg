@@ -14,3 +14,4 @@
 #include "header/reverseInteger.h"
 #include "header/palindromeInteger.h"
 #include "header/stringToInt.h"
+#include "header/deleteTargetChars.h"
