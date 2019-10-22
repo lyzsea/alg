@@ -197,6 +197,15 @@ TEST(testDeleteTargetChars, delTargetChars) {
     std::cout << "output: " << src << std::endl;
 }
 
+TEST(testTwoSingleNumber,singleNumber) {
+    std::cout << "\nfind two numbers that only appear once in the array." << std::endl;
+    CTwoSingleNumbers instance = CSingleton<CTwoSingleNumbers>::getInstance();
+    std::vector<int> nums ={1,1,2,2,3,4,4,5,5,7,9,9,7,0};
+    std::vector<int> result = instance.singleNumber(nums);
+    std::cout<<"appear only once two nums: ";
+    for_each(result.begin(),result.end(),&print<int>);
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
