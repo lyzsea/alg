@@ -16,3 +16,4 @@
 #include "header/stringToInt.h"
 #include "header/deleteTargetChars.h"
 #include "header/twoSingleNumber.h"
+#include "header/removeDuplicatesChar.h"

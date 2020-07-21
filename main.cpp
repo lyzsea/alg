@@ -206,6 +206,12 @@ TEST(testTwoSingleNumber,singleNumber) {
     for_each(result.begin(),result.end(),&print<int>);
 }
 
+TEST(testRemoveDuplicates, removeDuplicates) {
+    std::cout << "Return the final string after all such duplicate removals have been made." << std::endl;
+    CRemoveDuplicates instance = CSingleton<CRemoveDuplicates>::getInstance();
+    EXPECT_EQ(instance.removeDuplicates("abbaca"), "ca");
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

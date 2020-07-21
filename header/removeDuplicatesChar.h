@@ -22,6 +22,18 @@ For example, in "abbaca" we could remove "bb" since the letters are adjacent and
 
 class CRemoveDuplicates {
 public:
+    /**
+     * return a new memory string.
+     * @param src
+     * @return
+     */
     std::string removeDuplicates(const std::string& src);
+
+    /**
+     * user the origin memory.
+     * @param src
+     * @return
+     */
+    std::string removeDuplicatesOrigin(std::string src);
 };
 #endif //ALG_REMOVEDUPLICATESCHAR_H

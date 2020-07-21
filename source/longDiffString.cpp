@@ -16,8 +16,7 @@ std::string CLongDiffString::longestDiffSubstring(const std::string& src,ALG_TYP
         case ALG_TYPE::HASH :
             return asciiCodeHash(src);
         default:
-
-            break;
+            return asciiCodeHash(src);
     }
 }
 

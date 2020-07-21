@@ -20,6 +20,7 @@ std::string CLongCommString::findLongestCommString(const std::string &firstStr,
         case ALG_TYPE::MATRIX :
             return commStringByMatrix(firstStr, secondStr);
         case ALG_TYPE::RECURSIVE :
+            // TODO:
             break;
         default:
             return commStringByMatrix(firstStr, secondStr);
@@ -32,6 +33,7 @@ std::string CLongCommString::findLongestCommSequence(const std::string &firstStr
         case ALG_TYPE::MATRIX :
             return commSequenceByMatrix(firstStr, secondStr);
         case ALG_TYPE::RECURSIVE :
+            // TODO:
             break;
         default:
             return commSequenceByMatrix(firstStr, secondStr);
@@ -48,6 +50,7 @@ int CLongCommString::lengthOfCommSequence(const std::string &firstStr,
         default:
             break;
     }
+    return -1;
 }
 
 std::string CLongCommString::commStringByMatrix(const std::string &firstStr, const std::string &secondStr) {
